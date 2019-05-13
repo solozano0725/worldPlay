@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:context=".FragmentSingleton">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
@@ -15,19 +13,25 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TabItem
-            android:id="@+id/op_movie"
+            android:id="@+id/op_popular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/img_movies"
-            android:text="@string/movie" />
+            android:icon="@drawable/img_popular"
+            android:text="@string/popular" />
 
         <android.support.design.widget.TabItem
-            android:id="@+id/op_series"
+            android:id="@+id/op_toprated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/img_series"
-            android:text="@string/series" />
+            android:icon="@drawable/img_toprate"
+            android:text="@string/top_rated" />
 
+        <android.support.design.widget.TabItem
+            android:id="@+id/op_upcoming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/img_upcoming"
+            android:text="@string/upcoming" />
     </android.support.design.widget.TabLayout>
 
     <android.support.v4.view.ViewPager

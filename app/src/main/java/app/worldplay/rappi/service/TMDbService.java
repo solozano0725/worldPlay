@@ -9,7 +9,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface TMDBService {
+public interface TMDbService {
 
     @GET("/3/movie/{id}")
     Call<Movie> getMovie(@Path("id") int id);

@@ -5,4 +5,5 @@
     <color name="colorAccent">#8B8687</color>
 
     <color name="backgroundCardView">#b6292929</color>
+    <color name="light_gray_color_for_shape">#E8E8E8</color>
 </resources>

@@ -1,7 +1,7 @@
 package app.worldplay.rappi;
 
-import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
@@ -15,27 +15,31 @@ public class MyPageAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public android.support.v4.app.Fragment getItem(int pos) {
+    public Fragment getItem(int pos) {
         switch (pos) {
             case 0:
-                return FragmentAdapter.newInstance(0, context.getString(R.string.popular));
+                return FragmentAdapter.newInstance(0);
             case 1:
-                return FragmentAdapter.newInstance(0, context.getString(R.string.top_rated));
+                return FragmentAdapter.newInstance(1);
             case 2:
-                return FragmentAdapter.newInstance(0, context.getString(R.string.upcoming));
+                return FragmentSingleton.newInstance(1, context.getString(R.string.popular));
             case 3:
-                return FragmentAdapter.newInstance(1, context.getString(R.string.popular));
+                return FragmentSingleton.newInstance(1, context.getString(R.string.top_rated));
             case 4:
-                return FragmentAdapter.newInstance(1, context.getString(R.string.top_rated));
+                return FragmentSingleton.newInstance(1, context.getString(R.string.upcoming));
             case 5:
-                return FragmentAdapter.newInstance(1, context.getString(R.string.upcoming));
+                return FragmentSingleton.newInstance(2, context.getString(R.string.popular));
+            case 6:
+                return FragmentSingleton.newInstance(2, context.getString(R.string.top_rated));
+            case 7:
+                return FragmentSingleton.newInstance(2, context.getString(R.string.upcoming));
             default:
-                return FragmentAdapter.newInstance(2, context.getString(R.string.upcoming));
+                return FragmentAdapter.newInstance(3);
         }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 8;
     }
 }
