@@ -1,7 +1,5 @@
-package app.worldplay.rappi;
+package app.worldplay.rappi.ui;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,20 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentSingleton extends Fragment {
+import app.worldplay.rappi.R;
 
-    private int type = 0;
-    private String pos = "";
+public class FragmentAdapter extends Fragment {
 
-    public FragmentSingleton() {
+    private String type = "", filter = "";
+
+
+    public FragmentAdapter() {
         // Required empty public constructor
     }
 
-    public static FragmentSingleton newInstance(int type, String pos) {
-        FragmentSingleton fragment = new FragmentSingleton();
+    public static FragmentAdapter newInstance(String type, String filter) {
+        FragmentAdapter fragment = new FragmentAdapter();
         Bundle args = new Bundle();
-        args.putInt("type", type);
-        args.putString("pos", pos);
+        args.putString("type", type);
+        args.putString("filter", filter);
         fragment.setArguments(args);
         return fragment;
     }
@@ -31,18 +31,17 @@ public class FragmentSingleton extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            type = getArguments().getInt("type");
-            pos = getArguments().getString("pos");
-            Log.i("esto", type+pos);
+            type = getArguments().getString(type);
+            filter = getArguments().getString(filter);
+            Log.i("esto", ""+type);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_fragment_singleton, container, false);
-
+        View view = inflater.inflate(R.layout.fragment_adapter, container, false);
         return view;
     }
 
