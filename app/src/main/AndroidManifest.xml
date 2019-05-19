@@ -2,22 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.worldplay.rappi">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
+        android:theme="@style/AppTheme2">
+        <activity android:name=".common.SplashScreenAnimated" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.activity.MainActivity" android:theme="@style/AppTheme2"/>
+        <activity android:name=".view.activity.DetailsView" android:theme="@style/AppTheme2" android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.Video" android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"/>
     </application>
 
 </manifest>
