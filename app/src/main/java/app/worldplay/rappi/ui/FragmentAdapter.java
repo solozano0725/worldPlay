@@ -6,16 +6,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import app.worldplay.rappi.R;
 
 public class FragmentAdapter extends Fragment {
 
     private String type = "", filter = "";
-    private TextView txt;
 
-    public FragmentAdapter() {    }
+
+    public FragmentAdapter() {
+        // Required empty public constructor
+    }
 
     public static FragmentAdapter newInstance(String type, String filter) {
         FragmentAdapter fragment = new FragmentAdapter();
@@ -41,7 +42,6 @@ public class FragmentAdapter extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_adapter, container, false);
-        Log.i("esto", ""+type);
         return view;
     }
 

@@ -10,7 +10,10 @@ import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+>>>>>>> 2d67ecc87531d30922e21d165d63350c7dffabbc
 
 import app.worldplay.rappi.ui.FragmentAdapter;
 import app.worldplay.rappi.ui.ViewPagerAdapter;
@@ -91,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onPageSelected(int i) {
+<<<<<<< HEAD
                 switch (i) {
                     case 0:
                         navView.setSelectedItemId(R.id.navigation_movies);
@@ -106,6 +110,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 navView.getMenu().getItem(i).setChecked(true);
                 prevMenuItem = navView.getMenu().getItem(i);*/
+=======
+                if (prevMenuItem != null)
+                    prevMenuItem.setChecked(false);
+                else
+                    navView.getMenu().getItem(0).setChecked(false);
+
+                navView.getMenu().getItem(i).setChecked(true);
+                prevMenuItem = navView.getMenu().getItem(i);
+>>>>>>> 2d67ecc87531d30922e21d165d63350c7dffabbc
             }
             @Override
             public void onPageScrollStateChanged(int i) {

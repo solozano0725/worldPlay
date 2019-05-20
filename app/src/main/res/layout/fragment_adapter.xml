@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+=======
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+>>>>>>> 2d67ecc87531d30922e21d165d63350c7dffabbc
     tools:context=".ui.FragmentAdapter">
 
     <SearchView
@@ -34,5 +40,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sv" />
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2d67ecc87531d30922e21d165d63350c7dffabbc
 </android.support.constraint.ConstraintLayout>
