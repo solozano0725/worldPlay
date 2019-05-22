@@ -42,7 +42,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Movies m = moviestList.get(position);
-        holder.title.setText(m.getOriginalLanguage());
+        holder.title.setText(m.getTitle());
         Picasso.with(c)
                 .load(Constants.imageUrl + m.getBackdropPath())
                 .placeholder(R.drawable.ic_film)
