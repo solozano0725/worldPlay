@@ -20,5 +20,4 @@ public interface RestClient {
 
     @GET("movie/{id}?api_key=" + KEYAPI + "&append_to_response=videos" + LANG)
     Call<MoviesResponse> getMoviesList(@Path("id") String taskId);
-
 }

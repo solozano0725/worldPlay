@@ -23,15 +23,13 @@ public class HomeInteractor implements ContractHome.Interactor {
 
     @Override
     public void getMovies(final String type, int page, final Context c) {
-        Call<MoviesList> call = new RestApiAdapter(c).EstablecerConexion(3).getMovieListGeneral(type, KEYAPI,LENG, page);
+        Call<MoviesList> call = new RestApiAdapter(c).doConnection(3).getMovieListGeneral(type, KEYAPI,LENG, page);
         call.enqueue(new Callback<MoviesList>() {
             @Override
             public void onResponse(Call<MoviesList> call, Response<MoviesList> response) {
-                Log.d(HomeInteractor.class.getSimpleName(),
-                        String.format("--dfg %s. movies: %s", HomeInteractor.class.getSimpleName(), "getPeliculas "+type, response.body()));
+
                 if (response.isSuccessful()) {
                     presentator.getMoviesList(response.body());
-                    Log.i("result", response.body().toString());
                 } else {
                     presentator.getMoviesError(c.getString(R.string.error_msg));
                 }
@@ -45,12 +43,10 @@ public class HomeInteractor implements ContractHome.Interactor {
 
     @Override
     public void getMoviesFilter(String txt, final Context c) {
-        Call<MoviesList> call = new RestApiAdapter(c).EstablecerConexion(3).getSearchMovies(KEYAPI, LENG, txt, 1);
+        Call<MoviesList> call = new RestApiAdapter(c).doConnection(3).getSearchMovies(KEYAPI, LENG, txt, 1);
         call.enqueue(new Callback<MoviesList>() {
             @Override
             public void onResponse(Call<MoviesList> call, Response<MoviesList> response) {
-                Log.d(HomeInteractor.class.getSimpleName(),
-                        String.format("--dfg %s. movies: %s", HomeInteractor.class.getSimpleName(), "getFiltradas", response.body()));
                 if (response.isSuccessful()) {
                     presentator.getMoviesFilterList(response.body());
                 } else {

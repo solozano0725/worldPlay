@@ -173,7 +173,6 @@ public class MainActivity extends AppCompatActivity implements ContractHome.View
 
                 Intent intent = new Intent(context, DetailsView.class);
                 intent.putExtra(extra_movie,movie);
-                //intent.putExtra(extra_genres, );
                 context.startActivity(intent);
             }
 

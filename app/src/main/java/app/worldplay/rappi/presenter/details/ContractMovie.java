@@ -1,4 +1,4 @@
-package app.worldplay.rappi.presenter.detalle;
+package app.worldplay.rappi.presenter.details;
 
 import android.content.Context;
 
@@ -7,21 +7,26 @@ import app.worldplay.rappi.model.MoviesResponse;
 
 public interface ContractMovie {
 
-    interface ViewMovie{
+    interface ViewMovie {
         void getMovieInfo(String id, Context c);
+
         void setInfoMovie(
                 MoviesResponse info);
+
         void setInfoMovieError(String txt);
+
         void setInfoMovieWarning(String txt);
     }
 
-    interface PresentatorMovie{
+    interface PresentatorMovie {
         void getMovieInfo(String id, Context c);
+
         void getMovieInfoList(MoviesResponse im);
+
         void getInfoMovieError(String txt);
     }
 
-    interface InteractorMovie{
+    interface InteractorMovie {
         void getMovieInfo(String id, Context c);
     }
 }

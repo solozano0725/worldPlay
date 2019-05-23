@@ -18,6 +18,7 @@ public class SplashScreenAnimated extends AppCompatActivity implements Runnable 
     private static final long SPLASH_SCREEN_DELAY = 3000;
 
     ImageView img;
+
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         Window window = getWindow();

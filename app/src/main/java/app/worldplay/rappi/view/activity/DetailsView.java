@@ -20,8 +20,8 @@ import app.worldplay.rappi.common.Constants;
 import app.worldplay.rappi.model.Movies;
 import app.worldplay.rappi.model.MoviesResponse;
 import app.worldplay.rappi.network.Repository;
-import app.worldplay.rappi.presenter.detalle.ContractMovie;
-import app.worldplay.rappi.presenter.detalle.MoviePresenter;
+import app.worldplay.rappi.presenter.details.ContractMovie;
+import app.worldplay.rappi.presenter.details.MoviePresenter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.mateware.snacky.Snacky;
@@ -30,10 +30,11 @@ public class DetailsView extends AppCompatActivity implements ContractMovie.View
 
     public static final String extra_movie = "extra_movie";
     private Movies movies;
-    private String idvideo="", genres="", languages="";
+    private String idvideo="";
     private MoviesResponse moviesR;
     private Repository repository;
-
+    private TextView txtCardview;
+    private ImageView imgCardview;
     @BindView(R.id.img_movie_back) ImageView banner;
     @BindView(R.id.img_movie_poster) ImageView poster;
     @BindView(R.id.fab_star)FloatingActionButton fab_star;
@@ -64,19 +65,28 @@ public class DetailsView extends AppCompatActivity implements ContractMovie.View
         cardViewOverViews.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
             @Override
             public void onExpandChanged(View v, boolean isExpanded) {
-
+                txtCardview = v.findViewById(R.id.txt_cardview);
+                imgCardview = v.findViewById(R.id.img_cardview);
+                txtCardview.setText(getOverview(moviesR));
+                imgCardview.setImageDrawable(getResources().getDrawable(R.drawable.ic_overview));
             }
         });
         cardViewGenres.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
             @Override
             public void onExpandChanged(View v, boolean isExpanded) {
-
+                txtCardview = v.findViewById(R.id.txt_cardview);
+                imgCardview = v.findViewById(R.id.img_cardview);
+                txtCardview.setText(getGenres(moviesR));
+                imgCardview.setImageDrawable(getResources().getDrawable(R.drawable.ic_genres));
             }
         });
         cardViewLanguages.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
             @Override
             public void onExpandChanged(View v, boolean isExpanded) {
-
+                txtCardview = v.findViewById(R.id.txt_cardview);
+                imgCardview = v.findViewById(R.id.img_cardview);
+                txtCardview.setText(getLanguages(moviesR));
+                imgCardview.setImageDrawable(getResources().getDrawable(R.drawable.ic_languages));
             }
         });
     }
@@ -95,9 +105,6 @@ public class DetailsView extends AppCompatActivity implements ContractMovie.View
         votes.setText(String.valueOf(movies.voteCount));
         date.setText(movies.releaseDate);
         rated.setText(movies.voteAverage+"/10");
-        /**overview.setText(movies.overview);
-        genres.setText(movies.genreIds.toString());
-        languages.setText(movies.overview);**/
         Picasso.with(getApplicationContext()).load(Constants.imageUrl+movies.backdropPath).into(banner);
         Picasso.with(getApplicationContext()).load(Constants.imageUrl+movies.posterPath).into(poster);
     }
@@ -150,26 +157,45 @@ public class DetailsView extends AppCompatActivity implements ContractMovie.View
         }
     }
 
+    public String getOverview(MoviesResponse info){
+        String r = "";
+        if(info.getOverview().isEmpty() || info!=null) {
+            r = info.getOverview();
+        } else {
+            r = getResources().getString(R.string.error_msg_unknown);
+        }
+
+        return r;
+    }
+
     public String getGenres(MoviesResponse info){
         String r = "";
+        if(info.getGenres().size()!=0 || info!=null){
         for(int i = 0; i<info.getGenres().size(); i++){
-            if(i!=info.getGenres().size()){
-                r = info.getGenres().get(i).name +", ";
-            } else{
+            if(i==info.getGenres().size()-1){
                 r = info.getGenres().get(i).name +".";
+            } else{
+                r = info.getGenres().get(i).name +", ";
             }
+        }
+        } else {
+            r = getResources().getString(R.string.error_msg_unknown);
         }
         return r;
     }
 
     public String getLanguages(MoviesResponse info){
         String r = "";
+        if(info.getGenres().size()!=0 || info!=null){
         for(int i = 0; i<info.getSpokenLanguages().size(); i++){
-            if(i!=info.getSpokenLanguages().size()){
-                r = info.getSpokenLanguages().get(i).getName() +", ";
-            } else{
+            if(i==info.getSpokenLanguages().size()-1){
                 r = info.getSpokenLanguages().get(i).getName() +".";
+            } else{
+                r = info.getSpokenLanguages().get(i).getName() +", ";
             }
+        }
+        } else {
+            r = getResources().getString(R.string.error_msg_unknown);
         }
         return r;
     }

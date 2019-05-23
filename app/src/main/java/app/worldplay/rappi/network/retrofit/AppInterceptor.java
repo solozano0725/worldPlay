@@ -45,8 +45,8 @@ public class AppInterceptor implements Interceptor {
         Request.Builder builder = request.newBuilder();
         builder.addHeader("Authorization", TOKENAPP);
         builder.addHeader("Content-Type", "application/json;charset=utf-8");
-        if(request.body() != null){
-            Log.v("BODY",request.body().toString());
+        if (request.body() != null) {
+            Log.v("BODY", request.body().toString());
         }
         request = builder.build();
         Response response = chain.proceed(request);

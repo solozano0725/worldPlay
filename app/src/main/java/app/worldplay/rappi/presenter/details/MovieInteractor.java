@@ -1,4 +1,4 @@
-package app.worldplay.rappi.presenter.detalle;
+package app.worldplay.rappi.presenter.details;
 
 import android.content.Context;
 import android.util.Log;
@@ -21,12 +21,10 @@ public class MovieInteractor implements ContractMovie.InteractorMovie {
 
     @Override
     public void getMovieInfo(String id, final Context c) {
-        Call<MoviesResponse> call = new RestApiAdapter(c).EstablecerConexion(3).getMoviesList(id);
+        Call<MoviesResponse> call = new RestApiAdapter(c).doConnection(3).getMoviesList(id);
         call.enqueue(new Callback<MoviesResponse>() {
             @Override
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
-                Log.d(HomeInteractor.class.getSimpleName(),
-                        String.format("--dfg %s. Infopelicula: %s", HomeInteractor.class.getSimpleName(), "getMovieInfo", response.body()));
                 if (response.isSuccessful()) {
                     presentatorMovie.getMovieInfoList(response.body());
                 } else {

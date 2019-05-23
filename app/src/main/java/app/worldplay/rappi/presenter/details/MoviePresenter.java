@@ -1,4 +1,4 @@
-package app.worldplay.rappi.presenter.detalle;
+package app.worldplay.rappi.presenter.details;
 
 import android.content.Context;
 

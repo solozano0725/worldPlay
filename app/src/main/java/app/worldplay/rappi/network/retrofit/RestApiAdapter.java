@@ -1,6 +1,7 @@
 package app.worldplay.rappi.network.retrofit;
 
 import android.content.Context;
+
 import java.util.concurrent.TimeUnit;
 
 import app.worldplay.rappi.BuildConfig;
@@ -23,10 +24,10 @@ public class RestApiAdapter {
         this.context = context;
     }
 
-    public RestClient EstablecerConexion(int api){
+    public RestClient doConnection(int api) {
         OkHttpClient.Builder okHttpbuilder = new OkHttpClient().newBuilder().cache(new Cache(context.getCacheDir(), cacheSize));
         okHttpbuilder.addInterceptor(new AppInterceptor());
-        if(BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             okHttpbuilder.addInterceptor(loggingInterceptor);
@@ -36,7 +37,7 @@ public class RestApiAdapter {
         okHttpbuilder.writeTimeout(60, TimeUnit.SECONDS);
         OkHttpClient client = okHttpbuilder.build();
 
-        if(api == 3){
+        if (api == 3) {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Constants.apiV3)
                     .addConverterFactory(ScalarsConverterFactory.create())
@@ -45,7 +46,7 @@ public class RestApiAdapter {
                     .client(client)
                     .build();
             return retrofit.create(RestClient.class);
-        }else{
+        } else {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Constants.apiV4)
                     .addConverterFactory(ScalarsConverterFactory.create())
